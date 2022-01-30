@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:homework/pages/lesson5_1.dart';
+import 'package:homework/pages/lesson5_2.dart';
 
 
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:Lesson5_1(),
+      home:Lesson5_2(),
       theme:  ThemeData(
         textTheme: Theme.of(context).textTheme.apply(bodyColor: Colors.black, displayColor: Colors.black,),
         visualDensity: VisualDensity.adaptivePlatformDensity,
