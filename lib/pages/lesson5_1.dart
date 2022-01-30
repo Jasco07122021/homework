@@ -11,13 +11,41 @@ class _Lesson5_1State extends State<Lesson5_1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("UI"),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+      ),
       body: Center(
-        child: Column(
-          children: [
-            MaterialButton(onPressed: (){}),
-          ],
+        child: RichText(
+          text: TextSpan(
+            style: TextStyle(color: Colors.red,fontSize: 35),
+            text: "User",
+            children: const[
+              TextSpan(
+                style: TextStyle(color: Colors.green),
+                text: " Interface",
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
+
+  // MaterialButton _centerButton({text, navigation}) {
+  //   return MaterialButton(
+  //     color: Colors.greenAccent,
+  //     minWidth: 200,
+  //     shape: StadiumBorder(),
+  //     onPressed: () {
+  //       Navigator.push(
+  //           context, MaterialPageRoute(builder: (context) => navigation));
+  //     },
+  //     child: Text(text),
+  //   );
+  // }
 }
+
+
+
