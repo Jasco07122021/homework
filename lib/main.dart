@@ -3,6 +3,7 @@ import 'package:homework/pages/lesson5_1.dart';
 import 'package:homework/pages/lesson5_2.dart';
 import 'package:homework/pages/lesson5_3.dart';
 import 'package:homework/pages/lesson5_4.dart';
+import 'package:homework/pages/lesson5_5.dart';
 
 
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:Lesson5_4(),
+      home:Lesson5_5(),
       theme:  ThemeData(
         textTheme: Theme.of(context).textTheme.apply(bodyColor: Colors.black, displayColor: Colors.black,),
         visualDensity: VisualDensity.adaptivePlatformDensity,
