@@ -11,11 +11,11 @@ class Lesson5_6 extends StatefulWidget {
 }
 
 class _Lesson5_6State extends State<Lesson5_6> {
-  var _hotelsList = HotelsList();
+  final _hotelsList = HotelsList();
 
   int _currentPage = 0;
   late Timer _timer;
-  PageController _pageController = PageController(
+  final PageController _pageController = PageController(
     initialPage: 0,
   );
 

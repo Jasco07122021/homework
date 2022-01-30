@@ -6,7 +6,7 @@ import 'package:homework/pages/lesson5_5.dart';
 class ShoppingCard extends StatefulWidget {
   static const id = "shopping_card";
   List<Cars>? list = [];
-  ShoppingCard({this.list});
+  ShoppingCard({Key? key, this.list}) : super(key: key);
 
 
   @override
@@ -15,15 +15,11 @@ class ShoppingCard extends StatefulWidget {
 
 class _ShoppingCardState extends State<ShoppingCard> {
 
-  _checkList() {
-    print(widget.list);
-  }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _checkList();
   }
 
   @override
@@ -74,7 +70,7 @@ class _ShoppingCardState extends State<ShoppingCard> {
           ? Center(
         child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             Text(
               "Choose your favorite car",
               style:

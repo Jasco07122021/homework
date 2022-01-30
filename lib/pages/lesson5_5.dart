@@ -5,7 +5,7 @@ import 'package:homework/pages/lesson5_5_listPage.dart';
 class Lesson5_5 extends StatefulWidget {
   List<Cars>? listShoppingCart = [];
 
-  Lesson5_5({this.listShoppingCart});
+  Lesson5_5({Key? key, this.listShoppingCart}) : super(key: key);
 
   @override
   _Lesson5_5State createState() => _Lesson5_5State();
