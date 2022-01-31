@@ -1,27 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:homework/pages/lesson5_6.dart';
-import 'package:homework/pages/lesson5_7.dart';
-import 'package:homework/pages/lesson5_8.dart';
-
-
+import 'package:flutter/services.dart';
+import 'package:homework/pages/lesson5_10.dart';
+import 'package:homework/pages/lesson5_9.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+      overlays: [SystemUiOverlay.top]);
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  static final ValueNotifier<ThemeMode> themeNotifier =
+      ValueNotifier(ThemeMode.light);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home:Lesson5_8(),
-      theme:  ThemeData(
-        textTheme: Theme.of(context).textTheme.apply(bodyColor: Colors.black, displayColor: Colors.black,),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+    return ValueListenableBuilder(
+      valueListenable: themeNotifier,
+      builder: (_, ThemeMode currentMode, __) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: Lesson5_9(),
+          darkTheme: ThemeData.dark().copyWith(
+            primaryColor: Colors.white,
+            backgroundColor: Color(0xFF121212),
+          ),
+          themeMode: currentMode,
+          theme: ThemeData(
+            primaryColor: Colors.black,
+            backgroundColor: Colors.white,
+            appBarTheme: AppBarTheme(
+              titleTextStyle: TextStyle(color: Colors.black),
+              iconTheme: IconThemeData(color: Colors.black),
+            ),
+          ),
+        );
+      },
     );
   }
 }
