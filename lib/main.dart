@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:homework/pages/lesson5_10.dart';
+import 'package:homework/pages/lesson5_10_home_page.dart';
 import 'package:homework/pages/lesson5_9.dart';
 
 void main() {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       builder: (_, ThemeMode currentMode, __) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: Lesson5_9(),
+          home: Lesson5_10_HomePage(),
           darkTheme: ThemeData.dark().copyWith(
             primaryColor: Colors.white,
             backgroundColor: Color(0xFF121212),
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
               titleTextStyle: TextStyle(color: Colors.black),
               iconTheme: IconThemeData(color: Colors.black),
             ),
+            iconTheme: IconThemeData(color: Colors.grey),
           ),
         );
       },

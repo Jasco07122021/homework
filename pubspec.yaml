@@ -37,6 +37,7 @@ dependencies:
   simple_animations: ^4.0.1
   faker: ^2.0.0
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
