@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:homework/models/model_les_5.dart';
-import 'package:homework/pages/lesson5_5.dart';
+
+import 'lesson5_5.dart';
+
 
 
 class ShoppingCard extends StatefulWidget {

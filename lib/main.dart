@@ -1,14 +1,28 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:homework/pages/lesson5_10.dart';
-import 'package:homework/pages/lesson5_10_home_page.dart';
-import 'package:homework/pages/lesson5_9.dart';
+import 'package:homework/pages/lesson6/lesson6_1.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
       overlays: [SystemUiOverlay.top]);
-  runApp(const MyApp());
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [
+        Locale('en', 'US'),
+        Locale('ru', 'RU'),
+        Locale('uz', 'UZ'),
+        Locale('fr', 'FR'),
+        Locale('ja', 'JA'),
+        Locale('ko', 'KO'),
+      ],
+      path: 'assets/translations',
+      fallbackLocale: Locale('en','US'),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -23,8 +37,11 @@ class MyApp extends StatelessWidget {
       valueListenable: themeNotifier,
       builder: (_, ThemeMode currentMode, __) {
         return MaterialApp(
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
           debugShowCheckedModeBanner: false,
-          home: Lesson5_10_HomePage(),
+          home: Lesson6_1(),
           darkTheme: ThemeData.dark().copyWith(
             primaryColor: Colors.white,
             backgroundColor: Color(0xFF121212),
