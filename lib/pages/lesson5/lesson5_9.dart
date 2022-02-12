@@ -248,7 +248,7 @@ class _Lesson5_9State extends State<Lesson5_9> {
             ),
             ListTile(
               leading: Stack(
-                children: [
+                children: const [
                   CircleAvatar(
                     radius: 15,
                     backgroundColor: Colors.white,
@@ -262,7 +262,7 @@ class _Lesson5_9State extends State<Lesson5_9> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 18),
+                    padding: EdgeInsets.only(left: 18),
                     child: CircleAvatar(
                       backgroundColor: Colors.white,
                       radius: 15,

@@ -2,16 +2,16 @@ class User {
   String name;
   String nickName;
   String? postNumber;
-  String? FollowersNumber;
-  String? FollowingNumber;
+  String? followersNumber;
+  String? followingNumber;
   String? imgProfile;
 
   User({
     required this.name,
     required this.nickName,
     this.postNumber,
-    this.FollowersNumber,
-    this.FollowingNumber,
+    this.followersNumber,
+    this.followingNumber,
   });
 }
 
@@ -35,8 +35,8 @@ class UserList {
       name: "Jacob West",
       nickName: "jacob_w",
       postNumber: "54",
-      FollowersNumber: "834",
-      FollowingNumber: "162",
+      followersNumber: "834",
+      followingNumber: "162",
     ),
   ];
   List<Story> listStory = [

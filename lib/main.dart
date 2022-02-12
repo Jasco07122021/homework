@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:homework/pages/lesson6/lesson6_1.dart';
+import 'package:homework/pages/lesson6/lesson6_3.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           debugShowCheckedModeBanner: false,
-          home: Lesson6_1(),
+          home: Lesson6_3(),
           darkTheme: ThemeData.dark().copyWith(
             primaryColor: Colors.white,
             backgroundColor: Color(0xFF121212),

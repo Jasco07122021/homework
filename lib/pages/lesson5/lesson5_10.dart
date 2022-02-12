@@ -90,12 +90,12 @@ class _Lesson5_10State extends State<Lesson5_10> {
                                       _userFollowing(
                                           text: UserList()
                                               .list[0]
-                                              .FollowersNumber,
+                                              .followersNumber,
                                           category: "Followers"),
                                       _userFollowing(
                                           text: UserList()
                                               .list[0]
-                                              .FollowingNumber,
+                                              .followingNumber,
                                           category: "Following"),
                                     ],
                                   ),
