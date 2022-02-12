@@ -1,5 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:homework/models/user_model.dart';
+import 'package:homework/services/pref_service.dart';
+
+enum LogIn {
+  email,
+  password,
+}
+enum LogOut {
+  name,
+  email,
+  phone,
+  password,
+  confirmPassword,
+}
 
 class Lesson6_3 extends StatefulWidget {
   const Lesson6_3({Key? key}) : super(key: key);
@@ -9,16 +23,6 @@ class Lesson6_3 extends StatefulWidget {
 }
 
 class _Lesson6_3State extends State<Lesson6_3> {
-  // _doLogin(){
-  //   String emailUser = email.text.trim();
-  //   String passwordUser = password.text.trim();
-  //   User user =  User.from(email: emailUser, password: passwordUser);
-  //   Preference.setUser(user);
-  //   Preference.getUser().then((value) => {
-  //     print(value!.email + "  " + value.password)
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,6 +69,25 @@ class _Task1State extends State<Task1> {
   bool onFocus = false;
   int focusIndex = 2;
 
+  _controllerTextField(LogIn request) {
+    switch (request) {
+      case LogIn.email:
+        return email;
+      case LogIn.password:
+        return password;
+    }
+  }
+
+  _doLogin() {
+    String emailUser = email.text.trim();
+    String passwordUser = password.text.trim();
+    User user = User.from(email: emailUser, password: passwordUser);
+    Preference.setUser(user);
+    Preference.getUser().then((value) => {
+          print(value),
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,10 +120,16 @@ class _Task1State extends State<Task1> {
               ),
               SizedBox(height: 50),
               _textField(
-                  prefixIcon: Icons.person_outline, text: "Email", index: 0),
+                  prefixIcon: Icons.person_outline,
+                  text: "Email",
+                  index: 0,
+                  controller: LogIn.email),
               SizedBox(height: 20),
               _textField(
-                  prefixIcon: Icons.lock_open, text: "Password", index: 1),
+                  prefixIcon: Icons.lock_open,
+                  text: "Password",
+                  index: 1,
+                  controller: LogIn.password),
               SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -192,14 +221,14 @@ class _Task1State extends State<Task1> {
       shape: StadiumBorder(),
       minWidth: 150,
       padding: EdgeInsets.all(15),
-      onPressed: () {},
+      onPressed: _doLogin,
       child: Text("LOG IN"),
       textColor: Colors.white,
       color: Color(0xFF0000FF),
     );
   }
 
-  Container _textField({text, prefixIcon, index}) {
+  Container _textField({text, prefixIcon, index, controller}) {
     return Container(
       decoration: BoxDecoration(
         boxShadow: [
@@ -212,6 +241,7 @@ class _Task1State extends State<Task1> {
       ),
       height: 60,
       child: TextField(
+        controller: _controllerTextField(controller),
         onTap: () {
           setState(() {
             onFocus = !onFocus;
@@ -269,11 +299,47 @@ class Task2 extends StatefulWidget {
 }
 
 class _Task2State extends State<Task2> {
+  TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
+  TextEditingController phone = TextEditingController();
   TextEditingController password = TextEditingController();
+  TextEditingController confirmPassword = TextEditingController();
 
   bool onFocus = false;
   int focusIndex = 5;
+
+  _controllerTextField(LogOut request) {
+    switch (request) {
+      case LogOut.name:
+        return name;
+      case LogOut.email:
+        return email;
+      case LogOut.phone:
+        return phone;
+      case LogOut.password:
+        return password;
+      case LogOut.confirmPassword:
+        return confirmPassword;
+    }
+  }
+
+  _doLogOut() {
+    String nameUser = name.text.trim();
+    String emailUser = email.text.trim();
+    String phoneUser = phone.text.trim();
+    String passwordUser = password.text.trim();
+    String confirmPasswordUser = confirmPassword.text.trim();
+    User user = User(
+        name: nameUser,
+        email: emailUser,
+        phone: int.parse(phoneUser),
+        password: passwordUser,
+        confirmPassword: confirmPasswordUser);
+    Preference.setUser(user);
+    Preference.getUser().then((value) => {
+          print(value),
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -301,25 +367,39 @@ class _Task2State extends State<Task2> {
               ),
               SizedBox(height: 50),
               _textField(
-                  text: "Name", prefixIcon: Icons.person_outline, index: 0),
-              SizedBox(height: 20),
-              _textField(text: "Email", prefixIcon: Icons.email, index: 1),
-              SizedBox(height: 20),
-              _textField(
-                  text: "Phone", prefixIcon: Icons.phone_android, index: 2),
+                  text: "Name",
+                  prefixIcon: Icons.person_outline,
+                  index: 0,
+                  controller: LogOut.name),
               SizedBox(height: 20),
               _textField(
-                  text: "Password", prefixIcon: Icons.lock_open, index: 3),
+                  text: "Email",
+                  prefixIcon: Icons.email,
+                  index: 1,
+                  controller: LogOut.email),
+              SizedBox(height: 20),
+              _textField(
+                  text: "Phone",
+                  prefixIcon: Icons.phone_android,
+                  index: 2,
+                  controller: LogOut.phone),
+              SizedBox(height: 20),
+              _textField(
+                  text: "Password",
+                  prefixIcon: Icons.lock_open,
+                  index: 3,
+                  controller: LogOut.password),
               SizedBox(height: 20),
               _textField(
                   text: "Confirm Password",
                   prefixIcon: Icons.lock_open,
-                  index: 4),
+                  index: 4,
+                  controller: LogOut.confirmPassword),
               SizedBox(height: 30),
               MaterialButton(
                 padding: EdgeInsets.symmetric(horizontal: 60, vertical: 15),
                 shape: StadiumBorder(),
-                onPressed: () {},
+                onPressed: _doLogOut,
                 child: Text(
                   "CREATE",
                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -331,7 +411,8 @@ class _Task2State extends State<Task2> {
               RichText(
                 text: TextSpan(
                   text: "Already have an account? ",
-                  style: TextStyle(color: Colors.grey.shade700,fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Colors.grey.shade700, fontWeight: FontWeight.bold),
                   children: const [
                     TextSpan(
                       text: "Login here",
@@ -350,7 +431,7 @@ class _Task2State extends State<Task2> {
     );
   }
 
-  Container _textField({text, prefixIcon, index}) {
+  Container _textField({text, prefixIcon, index, controller}) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
@@ -364,6 +445,8 @@ class _Task2State extends State<Task2> {
       ),
       height: 60,
       child: TextField(
+        keyboardType: index == 2 ? TextInputType.number : TextInputType.text,
+        controller: _controllerTextField(controller),
         onTap: () {
           setState(() {
             onFocus = !onFocus;
