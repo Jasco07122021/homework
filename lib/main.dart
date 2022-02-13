@@ -1,9 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:homework/pages/lesson6/lesson6_3.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:homework/pages/lesson6/lesson6_4_1_login.dart';
 
 void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox("pdp_online");
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
@@ -29,7 +32,7 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   static final ValueNotifier<ThemeMode> themeNotifier =
-      ValueNotifier(ThemeMode.light);
+      ValueNotifier(ThemeMode.dark);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +44,7 @@ class MyApp extends StatelessWidget {
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           debugShowCheckedModeBanner: false,
-          home: Lesson6_3(),
+          home: Lesson6_4_1_login(),
           darkTheme: ThemeData.dark().copyWith(
             primaryColor: Colors.white,
             backgroundColor: Color(0xFF121212),
