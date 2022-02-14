@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -20,8 +21,10 @@ class _Lesson6_4_1_loginState extends State<Lesson6_4_1_login> {
     box.put("name", nameUser.text);
     box.put("password", password.text);
 
-    print("User name: " + box.get("name"));
-    print("Password: " + box.get("password"));
+    if (kDebugMode) {
+      print("User name: " + box.get("name"));
+      print("Password: " + box.get("password"));
+    }
   }
 
   @override

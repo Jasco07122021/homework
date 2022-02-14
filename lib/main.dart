@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:homework/pages/lesson6/lesson6_4_1_login.dart';
+import 'package:homework/pages/lesson6/lesson6_4_2_signIn.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           debugShowCheckedModeBanner: false,
-          home: Lesson6_4_1_login(),
+          home: Lesson6_4_2_SignInPage(),
           darkTheme: ThemeData.dark().copyWith(
             primaryColor: Colors.white,
             backgroundColor: Color(0xFF121212),
